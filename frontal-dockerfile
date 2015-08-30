@@ -1,0 +1,19 @@
+# Frontal
+#
+# VERSION               0.0.1
+
+
+FROM debian:latest
+MAINTAINER Mathieu Nayrolles
+
+LABEL Description="This image creates a frontal apache container to do reverse proxy" Version="1.0"
+
+RUN apt-get update && apt-get upgrade
+RUN apt-get -y install iputils-ping git tmux emacs vim wget apache2
+RUN a2enmod ssl
+RUN mkdir /etc/apache2/ssl
+RUN a2enmod proxy 
+RUN a2enmod proxy_http
+RUN a2enmod rewrite
+RUN mkdir /root/scripts
+RUN wget https://raw.githubusercontent.com/MathieuNls/Docker/master/apache-reverse-proxy.sh -O /root/scripts/reverse-proxy.sh
