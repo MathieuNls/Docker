@@ -51,7 +51,7 @@ then
 EOF
  
     cd /etc/apache2/sites-available/
-    a2ensite ${domain}.mindup.io.conf
+    a2ensite ${domain}.conf
  
     apache2ctl -t
  
